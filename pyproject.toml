@@ -1,0 +1,89 @@
+[project]
+name = "tobii-python"
+version = "0.1.1"
+description = "tobii python bindings"
+authors = [
+    {name = "Zhan Rongrui", email = "2742392377@qq.com"},
+]
+dependencies = []
+requires-python = "<3.13,>=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py38"
+
+ignore = [
+    "E501",
+    "E741",
+
+    "B904",
+    "B023",
+
+    "F841",
+    "F821",
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"] # Ignore unused imports in __init__.py
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = [
+    # isort
+    "I",   
+    # Pycodestyle
+    "E",
+    "W",
+
+    # Pyflakes
+    "F",
+
+    # flake8-future-annotations
+    "FA",
+
+    # Comprehensions
+    "C4",
+
+    # Pyupgrade
+    "UP",
+
+    # Bugbear
+    "B",
+
+    # Pylint
+    "PLE",
+    "PLC",
+]
+
+
+[tool.ruff.format]
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.ruff.isort]
+known-first-party = [
+    "tobii",
+]
+
+[tool.pdm.build]
+excludes = ["./**/.git"]
+includes = ["tobii"]
+source-includes = ["tests", "LICENSE", "README.md"]
+editable-backend = "path"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
